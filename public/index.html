@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wafa Bdeir's portfolio showcasing software engineering expertise, academic background, skills, and experience.">
+    <meta name="keywords" content="Wafa Bdeir, Software Engineer, Computer Science, Portfolio, C#, Python, Java, Web Development, Git, Oakland University">
+    <meta name="author" content="Wafa Bdeir">
+    <meta property="og:title" content="Wafa Bdeir - My Portfolio">
+    <meta property="og:description" content="Explore the professional portfolio of Wafa Bdeir, a skilled software engineer with expertise in various programming languages and software development.">
+    <meta property="og:image" content="me.jpg">
+    <meta property="og:url" content="https://wafabdeir.com">
+    <meta name="twitter:title" content="Wafa Bdeir - My Portfolio">
+    <meta name="twitter:description" content="Wafa Bdeir's portfolio, including experience, coursework, skills, and academic achievements in software engineering and computer science.">
+    <meta name="twitter:image" content="me.jpg">
+    <title>Wafa Bdeir - My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="script.js"></script>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f4f4f9;
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(to right, #333, #4CAF50);
+            padding: 15px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            color: rgb(5, 26, 18);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        nav a {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 10px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        nav a:hover {
+            background-color: #4CAF50;
+            border-radius: 5px;
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            color: rgb(5, 32, 7);
+            text-align: center;
+            padding: 100px 20px;
+            animation: fadeIn 2s ease-out;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #hero h1 {
+            font-size: 3rem;
+            margin: 10px 0;
+            animation: slideInFromLeft 1.5s ease-out;
+        }
+        #hero img {
+            margin: 50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            border: 4px solid white;
+            object-fit: cover;
+            animation: bounce 1s ease-in-out infinite alternate;
+        }
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
+        #hero p {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* space between the buttons */
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #4CAF50; /* Green button background */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        /* Sections */
+        section {
+            padding: 50px 20px;
+        }
+        section h2 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        section h2::after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: #4CAF50;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        #about {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        #about img {
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            border: 5px solid #4CAF50;
+            object-fit: cover;
+        }
+        #about div {
+            flex: 1;
+            text-align: left;
+            max-width: 500px;
+        }
+        #about p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Coursework Section */
+        #coursework {
+            background-color: #f8f8f8;
+            padding: 40px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        #coursework h2 {
+            font-size: 2.2rem;
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #coursework ul {
+            list-style: none;
+            padding: 0;
+        }
+        #coursework li {
+            font-size: 1.1rem;
+            color: #333;
+            padding: 5px;
+        }
+
+        /* Education Section */
+        .education-list {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 5px;
+            background: #f8f8f8;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .education-item {
+            margin-bottom: 20px;
+        }
+        .education-item h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        .education-item p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background: #f9f9f9;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+        .experience-item h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        .experience-item p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        /* Skills Section */
+        .skills-list, .soft-skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .skill-item, .soft-skill-item {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        #contact ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #contact li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+ /* Scroll to Top Button */
+ #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            transition: background 0.3s ease;
+        }
+        #scrollToTopBtn:hover {
+            background-color: #3b8c41;
+        }
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background: #222;
+            color: white;
+            padding: 20px 0;
+        }
+        footer a {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Wafa Bdeir</div>
+        <div>
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#coursework">Coursework</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div>
+                <h1>Hi, I'm Wafa Bdeir</h1>
+                <p>Software Engineer | Computer Science| Green Card Holder</p>
+                <div class="button-container">
+                    <a href="wafa 2024.pdf" class="btn" download>Download Resume</a>
+                    <a href="https://www.linkedin.com/in/wbdeir" class="btn" target="_blank">Connect on LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div>
+            <h2>About Me</h2>
+            <p>Master's graduate in Computer Science with a 3.93 GPA from Oakland University. Experienced in analyzing complex problems with a strong background in programming and database management. A team player, technically oriented, and eager to contribute to innovative solutions in multidisciplinary environments.
+                </p>
+        </div>
+        <img src="me.jpg" alt="Wafa Bdeir">
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-list">
+            <div class="education-item">
+                <h3>Master of Science in Computer Science</h3>
+                <p>Oakland University, Michigan, USA | 2022 - 2024</p>
+            </div>
+            <div class="education-item">
+                <h3>Bachelor of Science in Computer Graphics and Animation</h3>
+                <p>Princess Sumaya University for Technology, Amman, Jordan | 2008 - 2012</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="experience-item">
+            <h3>Teaching Assistant (TA)</h3>
+            <p>Oakland University, Michigan, USA | Sep 2023 - Apr 2024</p>
+            <ul>
+                <li>Guided undergraduate students in programming languages including C# and Java.</li>
+                <li>Assisted students with final projects and problem-solving.</li>
+                <li>Designed and facilitated workshops to improve student understanding.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-list">
+            <div class="skill-item">Python</div>
+            <div class="skill-item">C#</div>
+            <div class="skill-item">Java</div>
+            <div class="skill-item">HTML</div>
+            <div class="skill-item">CSS</div>
+            <div class="skill-item">JavaScript</div>
+            <div class="skill-item">Git</div>
+            <div class="skill-item">GitHub</div>
+        </div>
+    </section>
+
+    <!-- Soft Skills Section -->
+    <section id="soft-skills">
+        <h2>Soft Skills</h2>
+        <div class="soft-skills-list">
+            <div class="soft-skill-item">Communication</div>
+            <div class="soft-skill-item">Problem Solving</div>
+            <div class="soft-skill-item">Collaboration</div>
+        </div>
+    </section>
+
+    <!-- Coursework Section -->
+    <section id="coursework">
+        <h2>Coursework</h2>
+        <ul>
+            <li><strong>Web Development Fundamentals (Udemy)</strong> - October 2024</li>
+            <ul>
+                <li>Learned how websites work, including the roles of HTML, CSS, and JavaScript.</li>	
+                <li>Gained knowledge of how the internet works and how websites are served.</li>
+                <li>Developed skills in Git, GitHub, and version control.</li>
+                <li>Acquired troubleshooting and debugging techniques for development projects.
+                </li>
+            </ul>
+        </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <ul>
+            <li>Email: <a href="wafaabdeir1@gmail.com">wafaabdeir1@gmail.com</a></li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/wbdeir" >wbdeir@linkedin.com</a></li>
+        </ul>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="email" id="email" placeholder="Your Email">
+            <textarea id="message" placeholder="Your Message"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Wafa Bdeir | All Rights Reserved</p>
+    </footer>
+
+
+    <body>
+
+        <!-- Scroll Buttons -->
+        <button id="scrollToTopBtn" onclick="scrollToTop()">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+       
+        <script>
+            // Show scroll to top button
+            window.onscroll = function() {
+                var btn = document.getElementById('scrollToTopBtn');
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    btn.style.display = "block";
+                } else {
+                    btn.style.display = "none";
+                }
+            };
+    
+            // Scroll to top functionality
+            document.getElementById('scrollToTopBtn').onclick = function() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            };
+        </script>
+
+
+
+</body>
+</html>

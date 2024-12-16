@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= userName %>'s Portfolio</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Welcome to <%= userName %>'s Portfolio</h1>
+    <p><%= tagline %></p>
+    <p>About Me: <%= aboutMe %></p>
+    <h2>Education:</h2>
+    <ul>
+        <% education.forEach(function(edu) { %>
+            <li><%= edu.degree %> from <%= edu.institution %> (<%= edu.period %>)</li>
+        <% }); %>
+    </ul>
+    <h2>Experience:</h2>
+    <ul>
+        <% experience.forEach(function(exp) { %>
+            <li><%= exp.role %> at <%= exp.company %> (<%= exp.period %>)</li>
+            <ul>
+                <% exp.tasks.forEach(function(task) { %>
+                    <li><%= task %></li>
+                <% }); %>
+            </ul>
+        <% }); %>
+    </ul>
+    <h2>Contact:</h2>
+    <p>Email: <%= contact.email %></p>
+    <p>LinkedIn: <a href="<%= contact.linkedin %>">Profile</a></p>
+</body>
+</html>
