@@ -34,18 +34,11 @@
             color: inherit;
         }
 
-        /* Container */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-        }
-
         /* Navbar */
         nav {
             position: sticky;
             top: 0;
-            background: linear-gradient(to right, #333, #4CAF50);
+            background: linear-gradient(to right, #4CAF50, #333); /* Adjusted gradient */
             padding: 15px 20px;
             z-index: 1000;
             display: flex;
@@ -54,28 +47,29 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         nav .logo {
-            font-size: 1.5rem;
-            color: rgb(5, 26, 18);
+            font-size: 1.6rem; /* Increased size for consistency */
+            color: white; /* Changed to white for better contrast */
+            font-family: 'Montserrat', sans-serif; /* Applied Montserrat font */
             font-weight: bold;
             letter-spacing: 2px;
         }
         nav a {
             color: white;
-            font-size: 1rem;
+            font-size: 1.1rem; /* Increased font size for readability */
             font-weight: 600;
             padding: 10px;
             transition: background 0.3s ease, transform 0.2s ease;
         }
         nav a:hover {
-            background-color: #4CAF50;
+            background-color: #45a049; /* Slightly darker green */
             border-radius: 5px;
-            transform: scale(1.1);
+            transform: scale(1.05); /* Slight scale effect */
         }
 
         /* Hero Section */
         #hero {
             background: url('hero-bg.jpg') no-repeat center center/cover;
-            color: rgb(5, 32, 7);
+            color: white;
             text-align: center;
             padding: 100px 20px;
             animation: fadeIn 2s ease-out;
@@ -93,15 +87,15 @@
             }
         }
         #hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem; /* Increased size for prominence */
             margin: 10px 0;
             animation: slideInFromLeft 1.5s ease-out;
         }
         #hero img {
             margin: 50px;
-            width: 100px;
-            height: 100px;
-            border-radius: 100%;
+            width: 120px; /* Adjusted for better balance */
+            height: 120px; /* Adjusted size */
+            border-radius: 50%;
             border: 4px solid white;
             object-fit: cover;
             animation: bounce 1s ease-in-out infinite alternate;
@@ -115,34 +109,35 @@
             }
         }
         #hero p {
-            font-size: 1.2rem;
+            font-size: 1.4rem; /* Increased for better readability */
             font-weight: 500;
         }
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px; /* space between the buttons */
+            gap: 20px; /* Space between the buttons */
             margin-top: 20px;
         }
 
         .btn {
             background-color: #4CAF50; /* Green button background */
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px; /* Adjusted padding for larger buttons */
             text-decoration: none;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 18px; /* Larger font for emphasis */
         }
 
         .btn:hover {
             background-color: #45a049; /* Darker green on hover */
         }
+
         /* Sections */
         section {
-            padding: 50px 20px;
+            padding: 60px 20px; /* Increased padding for balance */
         }
         section h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem; /* Increased size for section headers */
             color: #4CAF50;
             text-align: center;
             margin-bottom: 20px;
@@ -151,7 +146,7 @@
         section h2::after {
             content: "";
             position: absolute;
-            width: 50px;
+            width: 70px; /* Wider underline */
             height: 3px;
             background-color: #4CAF50;
             bottom: -10px;
@@ -180,21 +175,21 @@
             max-width: 500px;
         }
         #about p {
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-size: 1.2rem; /* Improved readability */
+            line-height: 1.7;
             color: #555;
         }
 
         /* Coursework Section */
         #coursework {
             background-color: #f8f8f8;
-            padding: 40px 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 50px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             margin-top: 30px;
         }
         #coursework h2 {
-            font-size: 2.2rem;
+            font-size: 2.3rem; /* Adjusted size */
             color: #4CAF50;
             text-align: center;
             margin-bottom: 20px;
@@ -204,78 +199,9 @@
             padding: 0;
         }
         #coursework li {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #333;
-            padding: 5px;
-        }
-
-        /* Education Section */
-        .education-list {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 5px;
-            background: #f8f8f8;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-        .education-item {
-            margin-bottom: 20px;
-        }
-        .education-item h3 {
-            font-size: 1.5rem;
-            color: #2c3e50;
-        }
-        .education-item p {
-            font-size: 1rem;
-            color: #7f8c8d;
-        }
-        #experience {
-    padding: 20px;
-    background-color: #f4f4f4;
-    margin-top: 20px;
-    border-radius: 8px;
-}
-
-#experience h2 {
-    text-align: center;
-    color: #333;
-}
-
-.technical-skills, .soft-skills {
-    margin-bottom: 20px;
-}
-
-.technical-skills ul, .soft-skills ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.technical-skills li, .soft-skills li {
-    margin: 8px 0;
-    font-size: 1.1em;
-    line-height: 1.6;
-}
-
-.technical-skills strong, .soft-skills strong {
-    color: #0073e6;
-}
-
-
-        /* Skills Section */
-        .skills-list, .soft-skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .skill-item, .soft-skill-item {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
+            padding: 8px;
         }
 
         /* Contact Section */
@@ -287,27 +213,8 @@
         }
         #contact li {
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
- /* Scroll to Top Button */
- #scrollToTopBtn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            padding: 10px 20px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: none;
-            transition: background 0.3s ease;
-        }
-        #scrollToTopBtn:hover {
-            background-color: #3b8c41;
-        }
-
 
         /* Footer */
         footer {
@@ -318,6 +225,25 @@
         }
         footer a {
             color: #4CAF50;
+        }
+
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            transition: background 0.3s ease;
+        }
+        #scrollToTopBtn:hover {
+            background-color: #3b8c41;
         }
     </style>
 </head>
@@ -342,14 +268,16 @@
         <div class="container">
             <div>
                 <h1>Hi, I'm Wafa Bdeir</h1>
-                <p>Software Engineer | Computer Science| Green Card Holder</p>
+                <p>Software Engineer | Computer Science | Green Card Holder</p>
                 <div class="button-container">
                     <a href="wafa 2024.pdf" class="btn" download>Download Resume</a>
                     <a href="https://www.linkedin.com/in/wbdeir" class="btn" target="_blank">Connect on LinkedIn</a>
                 </div>
             </div>
+            <img src="me.jpg" alt="Wafa Bdeir">
         </div>
     </section>
+
 
     <!-- About Section -->
     <section id="about">
