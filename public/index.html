@@ -26,7 +26,7 @@
         }
         body {
             font-family: 'Roboto', sans-serif;
-            background: #f4f4f9;
+            background: #ffffff;
             color: #333;
         }
         a {
@@ -48,7 +48,7 @@
         }
         nav .logo {
             font-size: 1.6rem; /* Increased size for consistency */
-            color: white; /* Changed to white for better contrast */
+            color:darkgreen; /* Changed to white for better contrast */
             font-family: 'Montserrat', sans-serif; /* Applied Montserrat font */
             font-weight: bold;
             letter-spacing: 2px;
@@ -69,7 +69,7 @@
         /* Hero Section */
         #hero {
             background: url('hero-bg.jpg') no-repeat center center/cover;
-            color: white;
+            color: rgba(234, 226, 226, 0.601);
             text-align: center;
             padding: 100px 20px;
             animation: fadeIn 2s ease-out;
@@ -86,17 +86,21 @@
                 opacity: 1;
             }
         }
+
         #hero h1 {
-            font-size: 3.5rem; /* Increased size for prominence */
-            margin: 10px 0;
-            animation: slideInFromLeft 1.5s ease-out;
-        }
+    font-size: 3.5rem; /* Increased size for prominence */
+    margin: 10px 0;
+    color: darkgreen; /* Changed color to dark green */
+    animation: slideInFromLeft 1.5s ease-out;
+}
+
+        
         #hero img {
             margin: 50px;
-            width: 120px; /* Adjusted for better balance */
-            height: 120px; /* Adjusted size */
+            width: 120px; 
+            height: 120px; 
             border-radius: 50%;
-            border: 4px solid white;
+            border: 4px solid rgb(255, 255, 255);
             object-fit: cover;
             animation: bounce 1s ease-in-out infinite alternate;
         }
@@ -111,6 +115,7 @@
         #hero p {
             font-size: 1.4rem; /* Increased for better readability */
             font-weight: 500;
+            color: darkgreen; 
         }
         .button-container {
             display: flex;
@@ -121,7 +126,7 @@
 
         .btn {
             background-color: #4CAF50; /* Green button background */
-            color: white;
+            color: rgb(3, 48, 29);
             padding: 12px 25px; /* Adjusted padding for larger buttons */
             text-decoration: none;
             border-radius: 5px;
@@ -177,8 +182,63 @@
         #about p {
             font-size: 1.2rem; /* Improved readability */
             line-height: 1.7;
-            color: #555;
+            color: #1b1616;
         }
+        /* Container for skills */
+.skills-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.skill-set {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skill-set h3 {
+    font-size: 2.2rem;
+    color: #4CAF50; /* Green color for headings */
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.skill-set ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skill-set li {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.skill-set i {
+    color: #4CAF50; /* Green color for icons */
+    margin-right: 12px;
+    font-size: 1.4rem;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    .skills-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .skill-set {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
 
         /* Coursework Section */
         #coursework {
@@ -273,8 +333,9 @@
                     <a href="wafa 2024.pdf" class="btn" download>Download Resume</a>
                     <a href="https://www.linkedin.com/in/wbdeir" class="btn" target="_blank">Connect on LinkedIn</a>
                 </div>
+                
             </div>
-            <img src="me.jpg" alt="Wafa Bdeir">
+           
         </div>
     </section>
 
@@ -318,34 +379,36 @@
         </div>
     </section>
 
-   <!-- Experience Section -->
-<section id="experience">
-    <h2>Experience</h2>
+    <section id="experience">
+        <h2>Experience</h2>
+        
+        <!-- Technical Skills -->
+        <div class="skills-container">
+            <div class="skill-set">
+                <h3>Technical Skills</h3>
+                <ul>
+                    <li><i class="fas fa-code"></i> <strong>Programming Languages:</strong> C/C++, C#, Java, HTML/HTML5, CSS</li>
+                    <li><i class="fas fa-database"></i> <strong>Database Management:</strong> MySQL, Oracle, JSP, Servlets</li>
+                    <li><i class="fas fa-laptop-code"></i> <strong>Web Development:</strong> Node.js</li>
+                    <li><i class="fas fa-plug"></i> <strong>APIs:</strong> REST, GraphQL</li>
+                    <li><i class="fas fa-cogs"></i> <strong>Tools & Technologies:</strong> Microsoft Office, Git, GitHub, Visual Studio, Eclipse</li>
+                    <li><i class="fas fa-bug"></i> <strong>Testing:</strong> White-box and black-box testing, Agile Testing</li>
+                </ul>
+            </div>
+            
+            <!-- Soft Skills -->
+            <div class="skill-set">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li><i class="fas fa-comments"></i> <strong>Strong Communication</strong></li>
+                    <li><i class="fas fa-users"></i> <strong>Collaborative Team Player</strong></li>
+                    <li><i class="fas fa-sync-alt"></i> <strong>Adaptability and Flexibility</strong></li>
+                    <li><i class="fas fa-lightbulb"></i> <strong>Troubleshooting & Creative Problem Solving</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
     
-    <!-- Technical Skills -->
-    <div class="technical-skills">
-        <h3>Technical Skills</h3>
-        <ul>
-            <li><strong>Programming Languages:</strong> C/C++, C#, Java, HTML/HTML5, CSS</li>
-            <li><strong>Database Management:</strong> MySQL, Oracle, JSP, Servlets</li>
-            <li><strong>Web Development:</strong> Node.js</li>
-            <li><strong>APIs:</strong> REST, GraphQL</li>
-            <li><strong>Tools & Technologies:</strong> Microsoft Office, Git, GitHub, Visual Studio, Eclipse</li>
-            <li><strong>Testing:</strong> White-box and black-box testing, Agile Testing</li>
-        </ul>
-    </div>
-    
-    <!-- Soft Skills -->
-    <div class="soft-skills">
-        <h3>Soft Skills</h3>
-        <ul>
-            <li><strong>Strong Communication</strong></li>
-            <li><strong>Collaborative Team Player</strong></li>
-            <li><strong>Adaptability and Flexibility</strong></li>
-            <li><strong>Troubleshooting & Creative Problem Solving</strong></li>
-        </ul>
-    </div>
-</section>
 
 
     <!-- Coursework Section -->
