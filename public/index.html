@@ -229,23 +229,37 @@
             font-size: 1rem;
             color: #7f8c8d;
         }
+        #experience {
+    padding: 20px;
+    background-color: #f4f4f4;
+    margin-top: 20px;
+    border-radius: 8px;
+}
 
-        /* Experience Section */
-        .experience-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 5px;
-            background: #f9f9f9;
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-        }
-        .experience-item h3 {
-            font-size: 1.5rem;
-            color: #2c3e50;
-        }
-        .experience-item p {
-            font-size: 1rem;
-            color: #7f8c8d;
-        }
+#experience h2 {
+    text-align: center;
+    color: #333;
+}
+
+.technical-skills, .soft-skills {
+    margin-bottom: 20px;
+}
+
+.technical-skills ul, .soft-skills ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.technical-skills li, .soft-skills li {
+    margin: 8px 0;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.technical-skills strong, .soft-skills strong {
+    color: #0073e6;
+}
+
 
         /* Skills Section */
         .skills-list, .soft-skills-list {
@@ -376,30 +390,35 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-list">
-            <div class="skill-item">Python</div>
-            <div class="skill-item">C#</div>
-            <div class="skill-item">Java</div>
-            <div class="skill-item">HTML</div>
-            <div class="skill-item">CSS</div>
-            <div class="skill-item">JavaScript</div>
-            <div class="skill-item">Git</div>
-            <div class="skill-item">GitHub</div>
-        </div>
-    </section>
+   <!-- Experience Section -->
+<section id="experience">
+    <h2>Experience</h2>
+    
+    <!-- Technical Skills -->
+    <div class="technical-skills">
+        <h3>Technical Skills</h3>
+        <ul>
+            <li><strong>Programming Languages:</strong> C/C++, C#, Java, HTML/HTML5, CSS</li>
+            <li><strong>Database Management:</strong> MySQL, Oracle, JSP, Servlets</li>
+            <li><strong>Web Development:</strong> Node.js</li>
+            <li><strong>APIs:</strong> REST, GraphQL</li>
+            <li><strong>Tools & Technologies:</strong> Microsoft Office, Git, GitHub, Visual Studio, Eclipse</li>
+            <li><strong>Testing:</strong> White-box and black-box testing, Agile Testing</li>
+        </ul>
+    </div>
+    
+    <!-- Soft Skills -->
+    <div class="soft-skills">
+        <h3>Soft Skills</h3>
+        <ul>
+            <li><strong>Strong Communication</strong></li>
+            <li><strong>Collaborative Team Player</strong></li>
+            <li><strong>Adaptability and Flexibility</strong></li>
+            <li><strong>Troubleshooting & Creative Problem Solving</strong></li>
+        </ul>
+    </div>
+</section>
 
-    <!-- Soft Skills Section -->
-    <section id="soft-skills">
-        <h2>Soft Skills</h2>
-        <div class="soft-skills-list">
-            <div class="soft-skill-item">Communication</div>
-            <div class="soft-skill-item">Problem Solving</div>
-            <div class="soft-skill-item">Collaboration</div>
-        </div>
-    </section>
 
     <!-- Coursework Section -->
     <section id="coursework">
