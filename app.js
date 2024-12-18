@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const axios = require('axios');  // Import Axios
 
 const app = express();
 const port = 3000;
@@ -34,6 +35,23 @@ app.post('/new-post', (req, res) => {
     const newPost = { title, content, date: new Date() };
     posts.push(newPost);
     res.redirect('/');
+});
+
+// Example API call: Fetch data from an external API (e.g., weather data)
+app.get('/weather', (req, res) => {
+    // Replace with a real API URL (e.g., weather API)
+    const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY';
+
+    axios.get(apiUrl)
+        .then(response => {
+            const weatherData = response.data;
+            // Pass the weather data to your EJS template
+            res.render('weather', { weather: weatherData });
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            res.render('error', { message: 'Failed to fetch weather data' });
+        });
 });
 
 // Start the server
