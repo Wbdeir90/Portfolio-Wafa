@@ -1,60 +1,55 @@
 const express = require('express');
+const { Client } = require('pg'); // Import the Client class from pg
 const bodyParser = require('body-parser');
 const path = require('path');
-const axios = require('axios');  // Import Axios
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
 
-// Set view engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+// Database connection
+const db = new Client({
+    user: "postgres",
+    host: "localhost",
+    database: "portfolio_wafa_main",
+    password: "admin",
+    port: 5433,
+});
 
-// Serve static files like CSS and JS
-app.use(express.static(path.join(__dirname, 'public')));
+db.connect()
+    .then(() => console.log('Connected to PostgreSQL database'))
+    .catch(err => console.error('Error connecting to database', err));
 
-// Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));  // For static files like CSS, images
 
-// Store blog posts (won't persist on server restart)
-let posts = [];
+// Set up view engine (EJS) if you plan to use dynamic HTML pages
+app.set('view engine', 'ejs');
 
-// Route to display the homepage with all blog posts
+// Serve form.html as the landing page (contact form)
 app.get('/', (req, res) => {
-    res.render('index', { posts });
+    res.sendFile(path.join(__dirname, 'form.html'));  // Ensure form.html exists in the root
 });
 
-// Route to create a new blog post
-app.get('/new-post', (req, res) => {
-    res.render('new-post');
+// Handle form submission
+app.post('/submit', async (req, res) => {
+    const { name, email, message } = req.body;
+
+    try {
+        // Insert data into PostgreSQL database
+        const query = 'INSERT INTO contact_form (name, email, message) VALUES ($1, $2, $3)';
+        await db.query(query, [name, email, message]);
+
+        // Respond with a success message or redirect
+        res.send('<h1>Message sent successfully! Thank you for your submission.</h1>');
+    } catch (err) {
+        console.error('Error inserting data into database', err);
+        res.send('<h1>There was an error. Please try again later.</h1>');
+    }
 });
 
-// Handle form submission for new blog post
-app.post('/new-post', (req, res) => {
-    const { title, content } = req.body;
-    const newPost = { title, content, date: new Date() };
-    posts.push(newPost);
-    res.redirect('/');
-});
-
-// Example API call: Fetch data from an external API (e.g., weather data)
-app.get('/weather', (req, res) => {
-    // Replace with a real API URL (e.g., weather API)
-    const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY';
-
-    axios.get(apiUrl)
-        .then(response => {
-            const weatherData = response.data;
-            // Pass the weather data to your EJS template
-            res.render('weather', { weather: weatherData });
-        })
-        .catch(error => {
-            console.error('Error fetching weather data:', error);
-            res.render('error', { message: 'Failed to fetch weather data' });
-        });
-});
-
-// Start the server
+console.log(process.env.DB_PASSWORD); // Should print 'admin'
+// Start server
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server running at http://localhost:${port}`);
 });
