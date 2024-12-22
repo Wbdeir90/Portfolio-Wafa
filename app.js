@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const axios = require('axios');  // Import Axios
 
 const app = express();
 const port = 3000;
@@ -16,42 +15,38 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Store blog posts (won't persist on server restart)
-let posts = [];
+// Sample user data for portfolio
+const userData = {
+    userName: 'Wafa Bdeir',
+    tagline: 'A passionate software engineer and developer.',
+    aboutMe: 'I have a strong background in software development, with experience in various programming languages and tools.',
+    education: [
+        { degree: 'Master of Science in Computer Science', institution: 'Oakland University', period: '2022-2024' },
+        { degree: 'Bachelor of Science in Computer Graphics and Animation', institution: 'Princess Sumaya University', period: '2008-2012' }
+    ],
+    experience: [
+        {
+            role: 'Teaching Assistant',
+            company: 'Oakland University',
+            period: '2023-2024',
+            tasks: ['Guided undergraduate students in programming languages', 'Assisted with final projects', 'Designed workshops to enhance learning']
+        },
+        {
+            role: 'Software Engineer Intern',
+            company: 'Tech Solutions Inc.',
+            period: '2021-2022',
+            tasks: ['Developed and maintained web applications', 'Collaborated with cross-functional teams', 'Implemented test automation scripts']
+        }
+    ],
+    contact: {
+        email: 'wafa@example.com',
+        linkedin: 'https://www.linkedin.com/in/wafabdeir'
+    }
+};
 
-// Route to display the homepage with all blog posts
+// Route to serve the portfolio page
 app.get('/', (req, res) => {
-    res.render('index', { posts });
-});
-
-// Route to create a new blog post
-app.get('/new-post', (req, res) => {
-    res.render('new-post');
-});
-
-// Handle form submission for new blog post
-app.post('/new-post', (req, res) => {
-    const { title, content } = req.body;
-    const newPost = { title, content, date: new Date() };
-    posts.push(newPost);
-    res.redirect('/');
-});
-
-// Example API call: Fetch data from an external API (e.g., weather data)
-app.get('/weather', (req, res) => {
-    // Replace with a real API URL (e.g., weather API)
-    const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY';
-
-    axios.get(apiUrl)
-        .then(response => {
-            const weatherData = response.data;
-            // Pass the weather data to your EJS template
-            res.render('weather', { weather: weatherData });
-        })
-        .catch(error => {
-            console.error('Error fetching weather data:', error);
-            res.render('error', { message: 'Failed to fetch weather data' });
-        });
+    res.render('portfolio', userData);
 });
 
 // Start the server
