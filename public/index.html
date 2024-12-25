@@ -16,6 +16,7 @@
     <title>Wafa Bdeir - My Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script defer src="script.js"></script>
     <style>
         /* Global Styles */
@@ -308,6 +309,7 @@
     </style>
 </head>
 <body>
+    <div id="root"></div> <!-- React will inject the app here -->
 
     <!-- Navbar -->
     <nav>
@@ -477,6 +479,20 @@
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
             };
+        </script>
+         <script type="text/babel">
+            // React component that will be injected into your website
+            const MyReactComponent = () => {
+                return (
+                    <div>
+                        <h2>Welcome to My React Component</h2>
+                        <p>This content is rendered by React without changing the existing website structure!</p>
+                    </div>
+                );
+            };
+    
+            // Rendering the React component into the 'react-container' div
+            ReactDOM.render(<MyReactComponent />, document.getElementById('react-container'));
         </script>
 
 

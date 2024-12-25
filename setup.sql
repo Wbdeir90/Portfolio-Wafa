@@ -1,13 +1,19 @@
 -- Create the database
-CREATE DATABASE permalist;
+CREATE DATABASE portfolio_wafa_main;
 
 -- Select the database to use
-USE permalist;
+USE pportfolio_wafa_main;
 
--- Create the contact_form table
 CREATE TABLE contact_form (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    message TEXT NOT NULL
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    message TEXT
 );
+CREATE TABLE IF NOT EXISTS contact_form (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    message TEXT
+);
+
