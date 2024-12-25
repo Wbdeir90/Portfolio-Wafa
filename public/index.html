@@ -433,12 +433,19 @@
         <li>Email: <a href="mailto:wafaabdeir1@gmail.com">wafaabdeir1@gmail.com</a></li>
         <li>LinkedIn: <a href="https://www.linkedin.com/in/wbdeir" target="_blank">wbdeir@linkedin.com</a></li>
     </ul>
-    <form id="contact-form">
-        <input type="text" id="name" placeholder="Your Name">
-        <input type="email" id="email" placeholder="Your Email">
-        <textarea id="message" placeholder="Your Message"></textarea>
-        <button type="submit" id="submit-btn">Submit</button>
+    <form action="submit.php" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" required></textarea><br><br>
+        
+        <input type="submit" value="Send Message">
     </form>
+    
 </section>
 
     <!-- Footer -->
