@@ -12,9 +12,9 @@ $(document).ready(function() {
 
     // Scroll to the top when the button is clicked
     $scrollToTopBtn.click(function() {
-        $('html, body').animate({ scrollTop: 0 }, 'smooth');  // Use 'smooth' for smooth scroll
+        $('html, body').animate({ scrollTop: 0 }, 500); 
     });
-
+    
     // Contact Form Validation
     $('#contact-form').submit(function(e) {
         let name = $('#name').val();

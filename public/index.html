@@ -16,8 +16,13 @@
     <title>Wafa Bdeir - My Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Your Custom Script -->
     <script defer src="script.js"></script>
+    
     <style>
         /* Global Styles */
         * {
@@ -94,6 +99,7 @@
     color: darkgreen; /* Changed color to dark green */
     animation: slideInFromLeft 1.5s ease-out;
 }
+
 
         
         #hero img {
@@ -274,7 +280,14 @@
         }
         #contact li {
             margin-bottom: 15px;
-            font-size: 1.2rem;
+            
+        font-size: 1.2rem;
+        }
+        #contact p{
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #4CAF50;
+            font-size: 1.3rem;
         }
 
         /* Footer */
@@ -305,6 +318,29 @@
         }
         #scrollToTopBtn:hover {
             background-color: #3b8c41;
+        }
+         /* Styling for the Contact Us button */
+         .contact-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #4CAF50; /* Green background */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Hover effect */
+        .contact-button:hover {
+            background-color: #45a049; /* Slightly darker green */
+            transform: scale(1.1); /* Slightly increase the size */
+        }
+
+        /* Styling for the button container */
+        .contact-button-container {
+            text-align:center;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -427,29 +463,24 @@
             </ul>
         </ul>
     </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>If you'd like to get in touch with me, feel free to reach out via email or LinkedIn.</p>
+        <ul>
+            <li><a href="mailto:wafabdeir@example.com">wafabdeir1@gmial.com</a></li>
+            <li><a href="https://www.linkedin.com/in/wbdeir">LinkedIn</a></li>
+        
+        </ul>
+        <div class="contact-button-container">
+            <a href="form.html">
+                <button class="contact-button">Contact US &#128515</button>
+            </a>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-<section id="contact">
-    <h2>Contact</h2>
-    <ul>
-        <li>Email: <a href="mailto:wafaabdeir1@gmail.com">wafaabdeir1@gmail.com</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/wbdeir" target="_blank">wbdeir@linkedin.com</a></li>
-    </ul>
-    <form action="submit.php" method="POST">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" required></textarea><br><br>
-        
-        <input type="submit" value="Send Message">
-    </form>
     
-</section>
 
+    <a herf="thank-you.html"></a>
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Wafa Bdeir | All Rights Reserved</p>
@@ -458,43 +489,29 @@
 
     <body>
 
-        <!-- Scroll Buttons -->
-        <button id="scrollToTopBtn" onclick="scrollToTop()">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-       
-        <script>
-            // Show scroll to top button
-            window.onscroll = function() {
-                var btn = document.getElementById('scrollToTopBtn');
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    btn.style.display = "block";
-                } else {
-                    btn.style.display = "none";
-                }
-            };
-    
-            // Scroll to top functionality
-            document.getElementById('scrollToTopBtn').onclick = function() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            };
-        </script>
-         <script type="text/babel">
-            // React component that will be injected into your website
-            const MyReactComponent = () => {
-                return (
-                    <div>
-                        <h2>Welcome to My React Component</h2>
-                        <p>This content is rendered by React without changing the existing website structure!</p>
-                    </div>
-                );
-            };
-    
-            // Rendering the React component into the 'react-container' div
-            ReactDOM.render(<MyReactComponent />, document.getElementById('react-container'));
-        </script>
+      <!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" class="scrollToTopBtn" onclick="scrollToTop()">↑</button>
 
+<!-- Script to handle Scroll to Top functionality -->
+<script>
+    // Function to scroll to the top of the page smoothly
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Show or hide the "Scroll to Top" button based on page scroll position
+    window.onscroll = function() {
+        var button = document.getElementById("scrollToTopBtn");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            button.style.display = "block";
+        } else {
+            button.style.display = "none";
+        }
+    };
+</script>
+
+<!-- External JavaScript (if you have any additional JS code) -->
+<script src="script.js"></script>
 
 
 </body>

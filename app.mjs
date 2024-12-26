@@ -1,81 +1,59 @@
 import express from 'express';
-import pkg from 'pg';  // Import 'pg' as 'pkg'
-const { Client } = pkg;  // Extract 'Client' from 'pkg'
+import pkg from 'pg';
 import bodyParser from 'body-parser';
 import path from 'path';
-import dotenv from 'dotenv'; // Load environment variables from .env file
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
 
-dotenv.config(); // Load environment variables from .env file
+dotenv.config();
 
+const { Client } = pkg;
 const app = express();
-const port = process.env.PORT || 3000; // Allow dynamic port configuration for deployment
+const port = process.env.PORT || 3000;
 
-// Initialize PostgreSQL client
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const client = new Client({
-    host: 'localhost',
-    port: 5433,
-    user: 'postgres',       // replace with your PostgreSQL user
-    password: 'admin',      // replace with your PostgreSQL password
-    database: 'portfolio_wafa_main',  // replace with your actual database name
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || 5433,
+    user: process.env.DB_USER || 'postgres',
+    password: process.env.DB_PASSWORD || 'admin',
+    database: process.env.DB_NAME || 'portfolio_wafa_main',
 });
 
 client.connect()
-    .then(() => {
-        console.log("Connected to PostgreSQL");
-    })
-    .catch(err => {
-        console.error('Connection error', err.stack);
-    });
+    .then(() => console.log('Connected to PostgreSQL'))
+    .catch(err => console.error('Database Connection Error:', err));
 
-// Middleware setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.set('view engine', 'ejs');
-app.set('views', './views'); // Optional: specify views folder
-
-// PostgreSQL client setup (for DATABASE_URL if needed)
-if (process.env.DATABASE_URL) {
-  const clientFromEnv = new Client({
-    connectionString: process.env.DATABASE_URL,
-  });
-  clientFromEnv.connect()
-    .then(() => console.log('Connected to PostgreSQL database'))
-    .catch(err => console.error('Error connecting to database:', err));
-}
-
-// Serve static files from the 'public' directory
-const __dirname = path.resolve();  // Fix for ES module environment to get the current directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    // Fix the path to make it absolute
-    const normalizedPath = path.join(__dirname, 'form.html');
-    console.log("Current __dirname:", __dirname); // Debugging
-    console.log("Resolved Path:", normalizedPath); // Debugging
-  
-    res.sendFile(normalizedPath); // Serve the contact form
+    res.sendFile(path.join(__dirname, 'public', 'form.html'));
 });
+
 app.post('/submit', async (req, res) => {
-    console.log('POST /submit called with data:', req.body);
     const { name, email, message } = req.body;
 
     try {
-        // Insert the form data into the database
         const query = 'INSERT INTO contact_form (name, email, message) VALUES ($1, $2, $3)';
         await client.query(query, [name, email, message]);
-
-        // Send a response with a personalized message
         res.send(`
-            <h1>Message sent successfully!</h1>
-            <p>Thank you for your submission, ${name}.</p>
+            <html>
+                <body>
+                    <h1>Message sent successfully!</h1>
+                    <p>Thank you for your submission, ${name}.</p>
+                </body>
+            </html>
         `);
     } catch (err) {
         console.error('Error inserting data into database:', err);
-        res.send('<h1>There was an error. Please try again later.</h1>');
+        res.status(500).send('<h1>There was an error. Please try again later.</h1>');
     }
 });
 
-// Start the server
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
