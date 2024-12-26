@@ -28,19 +28,10 @@ client.connect()
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-<<<<<<< HEAD
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'form.html'));
-});
-
-=======
 app.set('view engine', 'ejs');
 app.set('views', './views'); // Optional: specify views folder
 
 // Serve static files from the 'public' directory
-const __dirname = path.resolve();  // Fix for ES module environment to get the current directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
@@ -49,7 +40,6 @@ app.get('/', (req, res) => {
 });
 
 // Handle form submission
->>>>>>> c4487255361b7ed1669228721d23eb23124fe4fd
 app.post('/submit', async (req, res) => {
     const { name, email, message } = req.body;
 
