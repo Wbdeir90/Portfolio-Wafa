@@ -33,28 +33,16 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.set('views', './views'); // Optional: specify views folder
 
-// PostgreSQL client setup (for DATABASE_URL if needed)
-if (process.env.DATABASE_URL) {
-  const clientFromEnv = new Client({
-    connectionString: process.env.DATABASE_URL,
-  });
-  clientFromEnv.connect()
-    .then(() => console.log('Connected to PostgreSQL database'))
-    .catch(err => console.error('Error connecting to database:', err));
-}
-
 // Serve static files from the 'public' directory
 const __dirname = path.resolve();  // Fix for ES module environment to get the current directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    // Fix the path to make it absolute
     const normalizedPath = path.join(__dirname, 'form.html');
-    console.log("Current __dirname:", __dirname); // Debugging
-    console.log("Resolved Path:", normalizedPath); // Debugging
-  
     res.sendFile(normalizedPath); // Serve the contact form
 });
+
+// Handle form submission
 app.post('/submit', async (req, res) => {
     console.log('POST /submit called with data:', req.body);
     const { name, email, message } = req.body;
