@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "my-blog",
   "version": "1.0.0",
@@ -23,3 +24,6 @@
     "vite": "^6.0.5"
   }
 }
+=======
+"{ your corrected package.json content }" 
+>>>>>>> 7097e41db0017b69da55528695f7b4035bb1483e
