@@ -1,13 +1,9 @@
-import React from 'react'; // Import React
-import './App.css'; // Import CSS styles
+import React from 'react';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Hello, React!</h1>  {/* New message */}
-        <p>Welcome to my portfolio app!</p> {/* Custom paragraph */}
-      </header>
+      <h1>Welcome to React!</h1>
     </div>
   );
 }
