@@ -1,12 +1,24 @@
 import express from 'express';
 import pkg from 'pg';
+<<<<<<< HEAD
+=======
+const { Client } = pkg;
+>>>>>>> 583ebe06887a923c9235058bcac580769c44b6d2
 import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 dotenv.config();
 
+<<<<<<< HEAD
 const { Client } = pkg;  // Correct way to import Client from pg
+=======
+// Manually define __dirname in ES module scope
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+>>>>>>> 583ebe06887a923c9235058bcac580769c44b6d2
 
 const app = express();
 const port = process.env.PORT || 3000;
