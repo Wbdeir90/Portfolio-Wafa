@@ -4,16 +4,10 @@
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
-<<<<<<< HEAD
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-scripts": "5.0.1"
-=======
-    "react": "^19.0.0",
-    "react-dom": "^18.0.0",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^4.2.4"
->>>>>>> 7097e41db0017b69da55528695f7b4035bb1483e
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,11 +32,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
-  },
-  "vite": "^6.0.5",
-  "type": "module"
-=======
   }
->>>>>>> 7097e41db0017b69da55528695f7b4035bb1483e
 }
