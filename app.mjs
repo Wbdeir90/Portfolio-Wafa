@@ -1,9 +1,5 @@
 import express from 'express';
-import pkg from 'pg';
-<<<<<<< HEAD
-=======
-const { Client } = pkg;
->>>>>>> 583ebe06887a923c9235058bcac580769c44b6d2
+import pg from 'pg';  // Default import for 'pg'
 import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
@@ -12,18 +8,16 @@ import { dirname } from 'path';
 
 dotenv.config();
 
-<<<<<<< HEAD
-const { Client } = pkg;  // Correct way to import Client from pg
-=======
 // Manually define __dirname in ES module scope
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
->>>>>>> 583ebe06887a923c9235058bcac580769c44b6d2
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Database connection setup
+const { Client } = pg;  // Destructure Client from pg
+
 const db = new Client({
     user: process.env.DB_USER || 'postgres',
     host: process.env.DB_HOST || 'localhost',
