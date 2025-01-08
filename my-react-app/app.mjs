@@ -1,7 +1,7 @@
-import express from 'express';
-import pkg from 'pg';
+import pkg from 'pg';  // Default import for 'pg'
+const { Client } = pkg;  // Destructure 'Client' from 'pg'
 
-const { Client } = pkg;
+import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
@@ -9,7 +9,6 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 dotenv.config();
-
 
 // Manually define __dirname in ES module scope
 const __filename = fileURLToPath(import.meta.url);

@@ -1,5 +1,7 @@
+import pkg from 'pg';  // Default import for 'pg'
+const { Client } = pkg;  // Destructure 'Client' from 'pg'
+
 import express from 'express';
-import { Client } from 'pg';  // Correct import for Client
 import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
