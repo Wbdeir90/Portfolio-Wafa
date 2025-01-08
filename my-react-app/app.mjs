@@ -1,16 +1,14 @@
-import pkg from 'pg';  // Default import for 'pg'
-const { Client } = pkg;  // Destructure 'Client' from 'pg'
-
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
+import { Client } from 'pg';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 dotenv.config();
 
-// Manually define __dirname in ES module scope
+// Setup __dirname for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -26,34 +24,37 @@ const db = new Client({
     port: process.env.DB_PORT || 5433,
 });
 
-// Connect to the database
+// Connect to the PostgreSQL database
 const connectToDB = async () => {
     try {
         await db.connect();
         console.log('Connected to PostgreSQL database');
     } catch (err) {
         console.error('Error connecting to database:', err);
-        process.exit(1); // Exit process if the database connection fails
+        process.exit(1); // Exit process if connection fails
     }
 };
+
+// Initialize database connection
 connectToDB();
 
 // Middleware setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// View engine setup
+// Set up the view engine (EJS)
 app.set('view engine', 'ejs');
-app.set('views', './views');
+app.set('views', path.join(__dirname, 'views'));
 
-// Static files
-app.use(express.static(path.join(process.cwd(), 'public')));
+// Serve static files (e.g., CSS, JS)
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
+// Route to serve the form page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(process.cwd(), 'public', 'form.html'));
+    res.sendFile(path.join(__dirname, 'public', 'form.html'));
 });
 
+// Route to handle form submission
 app.post('/submit', async (req, res) => {
     const { name, email, message } = req.body;
 
@@ -62,13 +63,15 @@ app.post('/submit', async (req, res) => {
         return res.status(400).send('<h1>All fields are required!</h1>');
     }
 
+    // Insert form data into the database
+    const query = 'INSERT INTO contact_form (name, email, message) VALUES ($1, $2, $3)';
+    
     try {
-        const query = 'INSERT INTO contact_form (name, email, message) VALUES ($1, $2, $3)';
         await db.query(query, [name, email, message]);
-        res.render('success', { name }); // Render a success page using EJS
+        res.render('success', { name }); // Render success page with user's name
     } catch (err) {
         console.error('Error inserting data into database:', err);
-        res.status(500).send('<h1>An error occurred while processing your request. Please try again later.</h1>');
+        res.status(500).send('<h1>An error occurred. Please try again later.</h1>');
     }
 });
 
