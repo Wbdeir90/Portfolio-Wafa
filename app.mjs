@@ -1,5 +1,5 @@
 import express from 'express';
-import pg from 'pg';  // Default import for 'pg'
+import { Client } from 'pg';  // Correct import for Client
 import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
@@ -16,8 +16,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Database connection setup
-const { Client } = pg;  // Destructure Client from pg
-
 const db = new Client({
     user: process.env.DB_USER || 'postgres',
     host: process.env.DB_HOST || 'localhost',
